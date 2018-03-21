@@ -1,7 +1,7 @@
 const Event = require('../models/event')
 
 function create (req, res) {
-  console.log(req)
+  console.log(req.body)
   const event = new Event(req.body.message)
   event
   .save((err, event) => {

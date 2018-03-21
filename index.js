@@ -7,6 +7,10 @@ const routes = require('./router')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const config = require('./config/config')
+var request = require('request'); // "Request" library
+var querystring = require('querystring')
+var cookieParser = require('cookie-parser')
+
 
 // Use Node's default promise instead of Mongoose's promise library
 mongoose.Promise = global.Promise
@@ -37,6 +41,7 @@ db.on('error', (err) => {
 
 // mongoose.connect(config.db, options)
 app.use(morgan('combined'))
+app.use(cookieParser())
 app.use(cors())
 app.use(bodyParser.json({ type: '*/*' }))
 app.use('/api', routes)
